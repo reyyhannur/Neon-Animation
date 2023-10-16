@@ -1,0 +1,88 @@
+:root {
+  --neon: hsl(94, 100%, 55%);
+  --bg: hsl(350, 10%, 1%);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background: var(--bg);
+}
+.container {
+  width: 100vw;
+  display: grid;
+  align-items: center;
+}
+.neon {
+  position: relative;
+  font-size: 10vw;
+  font-family: "Nunito", sans-serif;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  color: hsl(94, 80%, 85%);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 0.1em var(--neon), 0 0 0.25em var(--neon),
+    0 0 75rem var(--neon), 0 0 2em var(--neon);
+  width: 100%;
+  -webkit-box-reflect: below 0px linear-gradient(transparent, var(--neon));
+  line-height: 0.7em;
+  outline: none;
+  transition: 100ms;
+  grid-area: inner-div;
+}
+.neon::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: hsla(94, 100%, 50%, 0.1);
+  top: 200%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1, 3);
+  filter: blur(20px);
+  z-index: 99;
+}
+.neon::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: hsla(94, 100%, 50%, 0.15);
+  top: 200%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1, 3);
+  filter: blur(20px);
+  visibility: hidden;
+}
+.neon:hover,
+.neon:focus {
+  color: hsl(0, 100%, 100%);
+  text-shadow: 0 0 0.15em hsl(94, 100%, 80%), 0 0 0.35em hsl(94, 100%, 65%),
+    0 0 0.75em hsl(104, 100%, 50%), 0 0 1.5em hsl(104, 100%, 50%),
+    0 0 3em hsl(104, 100%, 50%), 0 0 4em var(--neon);
+}
+.neon:hover::after,
+.neon:focus::after {
+  visibility: visible;
+  transition: 100ms;
+}
+#firefly {
+  width: 100vw;
+  height: 200px;
+  top: 40vh;
+  grid-area: inner-div;
+  z-index: -1;
+  -webkit-box-reflect: below 0px linear-gradient(transparent, hsl(56, 95%, 57%));
+  line-height: 0.1px;
+  outline: none;
+}
